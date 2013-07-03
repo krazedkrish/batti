@@ -54,7 +54,7 @@ function week {
 	    field=$((7+$field))
 	fi
 
-	if [ $today == $i ]; then
+	if [ $today == $i ] && [ "$SGR" = "" ] ; then
 	    color="\033[1;32m"
 	    cdef="\033[0m"
 	else
@@ -62,7 +62,7 @@ function week {
 	    cdef=""
 	fi
 
-	echo -e ${color}${day[$i]} $field
+	echo -e ${color}${day[$i]} #$field
 	time=($(cut -f$field $SCHEDULE))
 	echo -e "\t${time[0]}"
 	echo -e "\t${time[1]}$cdef"
